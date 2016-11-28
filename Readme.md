@@ -13,9 +13,9 @@ Cette dernière règle à été ajoutée automatiquement lors de la configuratio
 ## 3. Lancez l'application
 - mvn clean compile exec:java
 - ajoutez une policy sur l'IAM Role de votre instance permettant les opérations suivantes sur votre queue :
-  - sqs:GetQueueUrl
-  - sqs:ReceiveMessage
-  - DeleteMessage
+  - `sqs:GetQueueUrl`
+  - `sqs:ReceiveMessage`
+  - `sqs:DeleteMessage`
 
 ## 4. Configuration d'une Redrive policy
 - Créez une seconde Queue `dead-test` qui servira de *dead queue*.
