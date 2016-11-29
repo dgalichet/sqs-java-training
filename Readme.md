@@ -11,14 +11,15 @@ Retournez sur la console SQS et observez :
 Cette dernière règle à été ajoutée automatiquement lors de la configuration du *Scheduled Event*
 
 ## 3. Lancez l'application
-- mvn clean compile exec:java
+- modifiez le fichier `pom.xml` et mettre en paramètre le nom de la queue 
+- exécutez le programme : `mvn clean compile exec:java`
 - ajoutez une policy sur l'IAM Role de votre instance permettant les opérations suivantes sur votre queue :
   - `sqs:GetQueueUrl`
   - `sqs:ReceiveMessage`
   - `sqs:DeleteMessage`
 
 ## 4. Configuration d'une Redrive policy
-- Créez une seconde Queue `dead-test` qui servira de *dead queue*.
+- Créez une seconde Queue `<dead-queue-name>` qui servira de *dead queue*.
 - Modifiez la configuration de votre première queue et ajoutez une *redrive policy* (Maximum receives = 3 par exemple)
 
 ## 5. Observer les effets du Visibility Timeout et de la Redrive Policy
@@ -26,3 +27,4 @@ Cette dernière règle à été ajoutée automatiquement lors de la configuratio
 - dans la console SQS, vérifiez que des messages apparaissent *In Flight*
 - si le temps de traitement dépasse le *Visibility Timeout*, les messages sont à nouveau présentés et le handle précédent n'est plus valide
 - si un message est présenté un nombre de fois supérieur au *Maximum receives*, celui ci doit arriver dans la *dead queue*. Vérifiez-le.
+
