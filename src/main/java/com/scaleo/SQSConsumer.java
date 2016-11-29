@@ -2,7 +2,7 @@ package com.scaleo;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQS;
@@ -18,7 +18,7 @@ public class SQSConsumer {
     private static AmazonSQS getSQS() {
         AWSCredentials credentials = null;
         try {
-            credentials = new ProfileCredentialsProvider().getCredentials();
+            credentials = InstanceProfileCredentialsProvider.getInstance().getCredentials();
         } catch (Exception e) {
             throw new AmazonClientException(
                     "Cannot load the credentials from the credential profiles file. " +

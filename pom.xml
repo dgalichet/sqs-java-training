@@ -37,7 +37,7 @@
         <configuration>
           <mainClass>com.scaleo.SQSConsumer</mainClass>
           <arguments>
-            <argument>test1</argument>
+            <argument>scaleo-formation-1</argument>
           </arguments>
         </configuration>
       </plugin>
