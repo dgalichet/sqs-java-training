@@ -21,9 +21,7 @@ public class SQSConsumer {
             credentials = InstanceProfileCredentialsProvider.getInstance().getCredentials();
         } catch (Exception e) {
             throw new AmazonClientException(
-                    "Cannot load the credentials from the credential profiles file. " +
-                    "Please make sure that your credentials file is at the correct " +
-                    "location (~/.aws/credentials), and is in valid format.",
+                    "Cannot load credentials. Are you sure the instance has a supplied Role ?",
                     e);
         }
 
