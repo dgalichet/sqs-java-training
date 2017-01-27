@@ -23,8 +23,8 @@ Cette dernière règle à été ajoutée automatiquement lors de la configuratio
 - Modifiez la configuration de votre première queue et ajoutez une *redrive policy* (Maximum receives = 3 par exemple)
 
 ## 5. Observer les effets du Visibility Timeout et de la Redrive Policy
-- modifiez le code du consommateur pour rendre aléatoire le temps de traitement du message (entre le *Receive* et le *Delete*)
+- modifiez le code du consommateur pour rendre aléatoire la réussite du traitement du message (pas de *Delete* si le traitement échoue)
 - dans la console SQS, vérifiez que des messages apparaissent *In Flight*
-- si le temps de traitement dépasse le *Visibility Timeout*, les messages sont à nouveau présentés et le handle précédent n'est plus valide
+- lorsque le temps de traitement dépasse le *Visibility Timeout*, les messages sont à nouveau présentés et le *delete handle* est différent
 - si un message est présenté un nombre de fois supérieur au *Maximum receives*, celui ci doit arriver dans la *dead queue*. Vérifiez-le.
 
