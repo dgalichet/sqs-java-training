@@ -40,7 +40,7 @@ public class SQSConsumer {
         ReceiveMessageResult receiveMessageResult = sqs.receiveMessage(queueUrl);
         List<Message> messages = receiveMessageResult.getMessages();
         for (Message message: messages) {
-            System.out.println("Received message : " + message.getBody());
+            System.out.println("Received message : " + message.getBody() + ". Receipt handle [" + message.getReceiptHandle() + "]");
             deleteMessage(sqs, queueUrl, message);
         }
     }
